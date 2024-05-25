@@ -1,4 +1,4 @@
-# Final Project Plan - Overview
+# Final Project Plan - Locally Chat with Images
 
 ## Goal
 
