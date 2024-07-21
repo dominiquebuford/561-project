@@ -15,7 +15,7 @@ def client():
 
 
 def test_image_to_base64_success():
-    with open("tests/test_image.jpg", "rb") as file:
+    with open("backend/tests/test_image.jpg", "rb") as file:
         base64_string = image_to_base64(file)
         assert base64_string is not None
 
@@ -47,7 +47,7 @@ def test_upload_file_no_file(client):
 
 def test_upload_file_no_filename(client):
     data = {
-        'file': (open('tests/test_image.jpg', 'rb'), 'test_image.jpg')
+        'file': (open('backend/tests/test_image.jpg', 'rb'), 'test_image.jpg')
     }
     response = client.post('/upload', data=data)
     assert response.status_code == 400
@@ -65,7 +65,7 @@ def test_upload_file_success(mock_model, mock_requests, client):
     mock_requests.return_value = mock_response
 
     data = {
-        'file': (open('tests/test_image.jpg', 'rb'), 'test_image.jpg'),
+        'file': (open('backend/tests/test_image.jpg', 'rb'), 'test_image.jpg'),
         'name': 'test_image'
     }
     response = client.post('/upload', data=data,
