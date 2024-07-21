@@ -7,3 +7,4 @@ requests==2.26.0
 numpy==1.21.2
 torch==1.10.0
 flake8==4.0.1
+pytest
