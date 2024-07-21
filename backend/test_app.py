@@ -3,9 +3,9 @@
 import pytest
 import json
 from unittest.mock import patch, Mock
-from flask import Flask
 import numpy as np
 from app import app, image_to_base64
+
 
 @pytest.fixture
 def client():
@@ -13,10 +13,12 @@ def client():
     with app.test_client() as client:
         yield client
 
+
 def test_image_to_base64_success():
     with open("tests/test_image.jpg", "rb") as file:
         base64_string = image_to_base64(file)
         assert base64_string is not None
+
 
 def test_find_similar_images(client):
     mock_embeddings = [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6], [0.7, 0.8, 0.9]]
@@ -36,10 +38,12 @@ def test_find_similar_images(client):
         assert response.status_code == 200
         assert json.loads(response.data) == ["id1", "id2", "id3"]
 
+
 def test_upload_file_no_file(client):
     response = client.post('/upload', data={})
     assert response.status_code == 400
     assert response.get_json() == {'error': 'No file part'}
+
 
 def test_upload_file_no_filename(client):
     data = {
@@ -48,6 +52,7 @@ def test_upload_file_no_filename(client):
     response = client.post('/upload', data=data)
     assert response.status_code == 400
     assert response.get_json() == {'error': 'No selected file'}
+
 
 @patch('app.requests.post')
 @patch('app.SentenceTransformer')
@@ -63,7 +68,8 @@ def test_upload_file_success(mock_model, mock_requests, client):
         'file': (open('tests/test_image.jpg', 'rb'), 'test_image.jpg'),
         'name': 'test_image'
     }
-    response = client.post('/upload', data=data, content_type='multipart/form-data')
+    response = client.post('/upload', data=data,
+                           content_type='multipart/form-data')
 
     assert response.status_code == 200
     response_data = response.get_json()

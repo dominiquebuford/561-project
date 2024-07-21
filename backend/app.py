@@ -11,6 +11,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+
 def image_to_base64(file):
     try:
         image_data = file.read()
@@ -20,7 +21,8 @@ def image_to_base64(file):
         print(f"Error: {e}")
         return None
 
-@app.route('/findSimilar', methods = ['POST'])
+
+@app.route('/findSimilar', methods=['POST'])
 @cross_origin()
 def find_similar_images():
     embeddings = json.loads(request.form['embeddings'])
@@ -33,13 +35,15 @@ def find_similar_images():
     results = []
     for idx, embedding in enumerate(embeddings):
         embedding_np = np.array(embedding)
-        searchTerm_embedding = searchTerm_embedding.astype(embedding_np.dtype)
-        cosine_sim = util.pytorch_cos_sim(searchTerm_embedding, embedding_np.reshape(1, -1)).item()
-        print(cosine_sim)
+        search_emb = searchTerm_embedding.astype(embedding_np.dtype)
+        emb_np_reshaped = embedding_np.reshape(1, -1)
+        cosine_sim = util.pytorch_cos_sim(search_emb, emb_np_reshaped).item()
+
         if cosine_sim > 0.3:
             results.append(ids[idx])
-    
+
     return results
+
 
 @app.route('/upload', methods=['POST'])
 @cross_origin()
@@ -54,13 +58,18 @@ def upload_file():
         base64_image = image_to_base64(file)
 
         if base64_image:
-            payload =  {
-            "stream":False,
-            "image_data":[{"id":10,"data":base64_image}],
-            "prompt":"You are a AI assistant that describes images in a single short, descriptive phrase no longer than 10 words. Avoid lots of filler words.\nUSER: What does the [img-10] contain?\nASSISTANT:"
-            }
+            payload = {
+                "stream": False,
+                "image_data": [{"id": 10, "data": base64_image}],
+                "prompt": "You are an AI assistant that describes images " +
+                "in a single short, descriptive phrase " +
+                "no longer than 10 words. Avoid lots of " +
+                "filler words.\nUSER: What does the [img-10] contain?\n" +
+                "ASSISTANT:"
+                }
             headers = {"Content-Type": "application/json"}
-            response = requests.post('http://localhost:8080/completion', headers=headers, json=payload)
+            response = requests.post('http://localhost:8080/completion',
+                                     headers=headers, json=payload)
             print(response)
             r = response.json()
 
@@ -69,9 +78,9 @@ def upload_file():
 
             tensor_json_serializable = embedding.tolist()
 
-            return {'answer':r["content"], 'embedding':tensor_json_serializable}
-        
+            return {'answer': r["content"],
+                    'embedding': tensor_json_serializable}
 
 
 if __name__ == "__main__":
-   app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000)
