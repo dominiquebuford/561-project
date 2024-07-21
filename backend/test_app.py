@@ -21,7 +21,7 @@ def test_image_to_base64_success():
 
 
 def test_find_similar_images(client):
-    mock_embeddings = [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6], [0.7, 0.8, 0.9]]
+    mock_embeddings = [[0.4, 0.2, 0.6], [0.5, 3.0, 0.6], [-12.6, 0.8, 5.0]]
     mock_ids = ["id1", "id2", "id3"]
     mock_search_term = "example search term"
 
@@ -36,7 +36,7 @@ def test_find_similar_images(client):
         })
 
         assert response.status_code == 200
-        assert json.loads(response.data) == ["id1", "id2", "id3"]
+        assert json.loads(response.data) == ["id1", "id2"]
 
 
 def test_upload_file_no_file(client):

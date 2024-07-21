@@ -42,7 +42,7 @@ def find_similar_images():
         if cosine_sim > 0.3:
             results.append(ids[idx])
 
-    return results
+    return jsonify(results)
 
 
 @app.route('/upload', methods=['POST'])
