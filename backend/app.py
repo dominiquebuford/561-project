@@ -69,7 +69,7 @@ def upload_file():
                 "ASSISTANT:"
                 }
             headers = {"Content-Type": "application/json"}
-            response = requests.post('http://host.docker.internal:8080' + 
+            response = requests.post('http://host.docker.internal:8080' +
                                      '/completion',
                                      headers=headers, json=payload)
             print(response)
