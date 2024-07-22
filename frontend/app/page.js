@@ -78,7 +78,7 @@ const Home = () => {
 
   // Function to handle form submission
   const handleSubmit = async (event) => {
-    setUploading(true);
+    
     event.preventDefault();
     if (!selectedFile) return;
 
@@ -87,7 +87,7 @@ const Home = () => {
       setUploading(false);
       return;
   }
-
+    setUploading(true);
     const formData = new FormData();
     formData.append('file', selectedFile);
     formData.append('url', createImageUrl(selectedFile));
