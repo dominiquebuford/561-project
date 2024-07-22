@@ -45,5 +45,23 @@ warming up the model with an empty run
 llama server listening at http://127.0.0.1:8080
 
 encode_image_with_clip: image embedding created: 576 tokens
-encode_image_with_clip: image encoded in   668.71 ms by CLIP (    1.16 ms per image patch)
-evaluated 610 image tokens in 15143702 us at 40.2808 tok/sec
+encode_image_with_clip: image encoded in  1115.00 ms by CLIP (    1.94 ms per image patch)
+evaluated 617 image tokens in 14780747 us at 41.7435 tok/sec
+encode_image_with_clip: image embedding created: 576 tokens
+encode_image_with_clip: image encoded in   957.45 ms by CLIP (    1.66 ms per image patch)
+evaluated 617 image tokens in 12767134 us at 48.3272 tok/sec
+encode_image_with_clip: image embedding created: 576 tokens
+encode_image_with_clip: image encoded in  1167.79 ms by CLIP (    2.03 ms per image patch)
+evaluated 617 image tokens in 14509692 us at 42.5233 tok/sec
+encode_image_with_clip: image embedding created: 576 tokens
+encode_image_with_clip: image encoded in  1014.87 ms by CLIP (    1.76 ms per image patch)
+evaluated 617 image tokens in 18590185 us at 33.1896 tok/sec
+encode_image_with_clip: image embedding created: 576 tokens
+encode_image_with_clip: image encoded in  1017.28 ms by CLIP (    1.77 ms per image patch)
+evaluated 614 image tokens in 15247982 us at 40.2676 tok/sec
+encode_image_with_clip: image embedding created: 576 tokens
+encode_image_with_clip: image encoded in  1006.24 ms by CLIP (    1.75 ms per image patch)
+evaluated 614 image tokens in 15126413 us at 40.5912 tok/sec
+encode_image_with_clip: image embedding created: 576 tokens
+encode_image_with_clip: image encoded in  1156.73 ms by CLIP (    2.01 ms per image patch)
+evaluated 614 image tokens in 16359759 us at 37.5311 tok/sec
