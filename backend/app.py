@@ -62,13 +62,14 @@ def upload_file():
                 "stream": False,
                 "image_data": [{"id": 10, "data": base64_image}],
                 "prompt": "You are an AI assistant that describes images " +
-                "in a single short, descriptive phrase " +
-                "no longer than 10 words. Avoid lots of " +
-                "filler words.\nUSER: What does the [img-10] contain?\n" +
+                "in a descriptive phrase " +
+                "between 15 and 30 words. Describe" +
+                "everything you see. " +
+                "\nUSER: What does the [img-10] contain?\n" +
                 "ASSISTANT:"
                 }
             headers = {"Content-Type": "application/json"}
-            response = requests.post('http://localhost:8080/completion',
+            response = requests.post('http://host.docker.internal:8080/completion',
                                      headers=headers, json=payload)
             print(response)
             r = response.json()
