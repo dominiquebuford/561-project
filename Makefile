@@ -4,6 +4,7 @@ SOURCE_DIR = backend
 TEST_DIR = backend
 
 #define commands
+PYTHON_FORMATTER = black
 LINTER = flake8
 TESTER = pytest
 
@@ -13,6 +14,8 @@ TESTER = pytest
 install:
 	pip install -r $(SOURCE_DIR)/requirements.txt
 
+format:
+	$(PYTHON_FORMATTER) $(SOURCE_DIR)
 #Lint code in backend folder
 lint:
 	$(LINTER) $(SOURCE_DIR)
