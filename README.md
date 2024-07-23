@@ -11,8 +11,8 @@ Set up and Run Application
 1. To download and launch the llamafile locally, please run the following commands in your terminal: "chmod +x run_llamafile.sh" "./run_llamafile.sh". Note that if the llamafile is not let downloaded onto your device, this completion will take a couple of minutes. 
 You should see the following statement if step one correctly executed: ![Step 1](ReadMeImages/step1.png)
 2. Once the llamafile is running on localhost:8080, run "docker-compose build" "docker-compose up" to build the docker images for the frontend and backend of the application. 
-3. navigate to http://localhost:3000 to interact with the application. [Application UI](ReadMeImages/step3.png)
+3. navigate to http://localhost:3000 to interact with the application. ![Application UI](ReadMeImages/step3.png)
 
 Unit Tests:
 To run unit tests, please run the command "make test". 5 Tests should be showing as passing
-[Testing Results](ReadMeImages/test1.png)
+![Testing Results](ReadMeImages/test1.png)
