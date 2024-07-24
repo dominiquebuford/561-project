@@ -36,3 +36,6 @@ To run unit tests, please run the command "make test". 5 Tests should be showing
 ![Testing Results](ReadMeImages/test1.png)
 
 ## Evaluation Results
+Average Output Speed (tok/sec) : 47 tok/sec ( 617 image tokens per image)
+Average Latency: 72 seconds
+Outputs from LLM: Measured with human evaluation and cosine similarity to human-produced captions: 74% cosine similarity
