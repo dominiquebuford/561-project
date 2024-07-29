@@ -25,8 +25,8 @@ cd 561-project
 chmod +x run_llamafile.sh
 ./run_llamafile.sh 
 ```
- Note that if the llamafile is not let downloaded onto your device, this completion will take a couple of minutes. The automated opening for the llamafile browser window has been disabled to avoid unnecessary tabs but you can navigate to http://localhost:8080 to interact with the built-in chat interface.
-You should see the following statement if step one correctly executed: ![Step 1](ReadMeImages/step1.png)
+ Note that if the llamafile is not yet downloaded onto your device, this completion will take a couple of minutes. The automated opening for the llamafile browser window has been disabled to avoid unnecessary tabs but you can navigate to http://localhost:8080 to interact with the built-in chat interface.
+You should see the following statement if correctly executed: ![Step 3](ReadMeImages/step1.png)
 4. In another terminal window, build docker images for the frontend and backend of the application:
 ```sh
  docker-compose build 
